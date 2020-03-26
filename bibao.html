@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+        /* function lazySum(arr) {
+            var sum = function () {
+                return arr.reduce(function (x, y) {
+                    return x + y
+                })
+            }
+            return sum
+        };
+        var f = lazySum([1, 2, 3, 4, 5]);//当我们调用lazySum时，每次调用都会返回一个新的函数,返回的并不是求和结果，而是一个求和函数。就算传入相同的参数，f1和f2也不是相同的。
+        var f1 = lazySum([1, 2, 3, 4, 5]);
+        var f2 = lazySum([1, 2, 3, 4, 5]);
+        console.log(f());
+        console.log(f1 === f2) */
+
+
+
+        //箭头函数
+        /* x => x * x;
+
+        x => {
+            if (x > 0) {
+                return x * x;
+            }
+            else {
+                return - x * x;
+            }
+        }//多条语句花括号和return就不能省略了 */
+
+
+
+        /* (x,y)=>x*y+x //多个参数用括号括起来 */
+
+
+
+        /* x => {
+            return { name: 'chen' }
+        }//x=>{name:'chen'}返回一个对象这么简写会出错，应该写成这个样子x=>({name:'chen'}) */
+
+
+
+        /* function getAge() {
+            var y = new Date().getFullYear();
+            return y - this.birth;
+        }
+            var xiaoming = {
+            name: '小明',
+            birth: 1990,
+            age: getAge
+        };
+        console.log(xiaoming.age());
+        /* var fn=xiaoming.age;
+        console.log(fn())//这么调用会报错 */
+        /* console.log(getAge.apply(xiaoming, [])); *///利用apply方法修复this的指向问题 */
+
+
+
+        //利用箭头函数修复this的指向问题
+        /* var obj = {
+            birth: 1990,
+            getAge: function () {
+                var b = this.birth; // 这个this指向外层的obj对象
+                var fn = function () {
+                    return new Date().getFullYear() - this.birth; // this指向window或undefined,不能指向外部的obj，所以调用函数会出错，显示birth是未定义的。可以使用箭头函数去改写这个函数
+                };
+                return fn();
+            }
+        };
+        console.log(obj.getAge()) */
+
+
+
+        //箭头函数改写
+        /* var obj = {
+            birth: 1990,
+            getAge: function () {
+                var b = this.birth; // 1990
+                var fn = () => new Date().getFullYear() - this.birth;//这一行是使用箭头函数改写后的代码
+                return fn();
+            }
+        };
+        console.log(obj.getAge())//使用箭头函数改写代码后再次调用函数就是正常的，因为箭头函数内部的this总是指向词法作用域，也就是外层调用者，在这个里面指向的就是obj对象。 */
+
+
+
+        /* var x='chen';
+        var fun=()=>console.log(this.x);
+        fun();//箭头函数已经绑定了词法作用域，所以使用apply()或call()调用箭头函数时，无法对this进行绑定，传入的第一个参数会被忽略。 */
+
+
+
+        //用箭头函数简化数组的sort()排序
+        /* var arr = [10, 20, 1, 2];
+        arr.sort((x, y) => {
+            if (x < y) {
+                return -1;
+            }
+            if (x > y) {
+                return 1;
+            }
+            return 0;
+        });
+        console.log(arr)//将内部比较大小使用三元表达式嵌套，如下面代码 */
+
+
+        //使用三元表达式嵌套内部的比较代码
+        /* var arr = [10, 20, 1, 2];
+        arr.sort((x, y) => (x > y) ? -1 : ((x = y) ? 0 : 1));//使用三元表达式比较大小的一种简洁的代码形式
+        console.log(arr) */
+
+
+
+        //另一种更加简洁的方式
+        var arr = [10, 20, 1, 2];
+        arr.sort((x, y) => x - y);//最简单的方式对数组的数字元素进行大小排序,sort() 方法用原地算法对数组的元素进行排序，并返回数组。默认排序顺序是在将元素转换为字符串，然后比较它们的UTF-16代码单元值序列时构建的。要比较数字而非字符串，比较函数可以简单的以 a 减 b
+        console.log(arr)
+    </script>
+</body>
+
+</html>
