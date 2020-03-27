@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+        /* function foo(x) {
+            x + x  //缺少了return语句，相当于在函数代码块末尾有一个隐含的return undefined语句，自然返回的结果就是undefined。
+        };
+        console.log(foo(1))//这是函数的定义，接下来我们看一下generator生成器的定义 */
+
+
+
+        //generator生成器的定义
+        /* function* foo(x) {
+            yield x + 1;
+            yield x + 3;
+            return x + 4;
+        };
+        console.log(foo(1)) */
+
+
+
+        //定义一个n，如何生成一个长度为n的斐波拉契函数？
+        /* function foo(max) {
+            var a = 0, b = 1,
+                arr = [0, 1];
+            while (arr.length < max) {
+                [a, b] = [b, a + b];//这个是解构赋值里面的知识点，同时这一行是这个斐波拉契函数的精华。
+                arr.push(b)
+            };
+            return arr  //函数只能返回一次，所以只能返回一个得到了完整结果的数组。也就是说当我得到了我所想要的结果时，再通过return去返回我想要的结果。如果要通过generator去改写这个斐波拉契函数，应该如何去改写？
+        };
+        console.log(foo(5));
+        console.log(foo(6)); */
+
+
+
+        //使用generator生成器来改写斐波拉契函数
+        function* foo(max) {
+            var a = 0, b = 1, n = 0;
+            while (n < max) {
+                yield a;
+                [a, b] = [b, a + b];
+                n++
+            };
+            return
+        }
+        /* var f = foo(5);//调用generator对象的第一个方法就是不断的调用generator对象的next()方法。
+        console.log(f.next());
+        console.log(f.next());
+        console.log(f.next());
+        console.log(f.next());
+        console.log(f.next());
+        console.log(f.next()); */
+
+        //调用generator对象的第二个方法就是使用for of循环遍历
+        for (var x of foo(10)) {
+            console.log(x)
+        }
+
+
+
+        /* var a = 0, b = 1;
+        a = b;
+        b = a + b;//分开赋值和使用解构赋值[a,b]=[b,a+b]这两种赋值的方式并不相同，所得到的结果是不一样的
+        console.log(a);
+        console.log(b); */
+
+
+
+        //编写函数生成一个自增的id
+        /* var current_id=0;
+        function next_id(){
+            current_id++;
+            return current_id
+        };
+        console.log(next_id())//用generator来改写这段代码，因为函数无法保存状态，所以需要一个全局的变量来保存数字。 */
+
+
+        /* for(let id=0;;i++){
+            yield id;
+        } */
+
+        //generator生成器的知识没有完全掌握
+
+
+
+        
+    </script>
+</body>
+
+</html>
