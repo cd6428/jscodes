@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+        //typeof操作符获取对象的类型。总是返回一个字符串。在js的世界里一切都是对象
+        /* console.log(typeof NaN);  //'number'
+        console.log(typeof null);
+        console.log(typeof []);
+        console.log(typeof {});
+        console.log(typeof Math.abs) */
+
+
+
+        //什么是包装对象？就是将什么东西包装成为对象。number，boolean，string三种数据类型有包装对象
+        /* var n = new Number(123);//生成了一个新的包装类型，虽然n的值仍然为123，但是n的类型已经变成了object
+        console.log(n);
+        console.log(typeof n);
+        console.log(n === 123) *///虽然这两者的值相同，但是他们的数据类型已经不一样了
+        //最好不要使用包装对象，如果漏写了new那么情况会大大不一样
+
+
+
+        //RegExp正则表达式  用来匹配字符串的强有力武器 学好正则表达式很重要
+
+
+
+        //JSON 是一种数据交换格式  将一个对象序列化成为一个JSON格式的字符串
+        var xiaoming = {
+            name: '小明',
+            age: 14,
+            gender: true,
+            height: 1.65,
+            grade: null,
+            'middle-school': '\"W3C\" Middle School',
+            skills: ['JavaScript', 'Java', 'Python', 'Lisp'],
+            /* toJSON: function () {//直接定义一个toJSON方法，返回所要序列化的数据
+                return {
+                    'Name': this.name,
+                    'Age': this.age
+                }
+            } */
+        };
+        // var s = JSON.stringify(xiaoming);
+        // var s = JSON.stringify(xiaoming, null, ' ')//这是为了输出的好看一点，按行排列
+        // var s = JSON.stringify(xiaoming, ['name', 'skills'], ' ')//传入数组输出指定的键值对
+
+        /* function convert(key, value) {
+            if (typeof value === 'string') {
+                return value.toUpperCase()
+            }
+            return value
+        };
+        var s = JSON.stringify(xiaoming, convert, ' ')//也可以传入一个函数，上面这个函数是对value值进行了相应的处理，之后返回一个JSON格式的字符串 */
+
+
+        var s = JSON.stringify(xiaoming);
+        console.log(s)
+
+
+
+        //反序列化 将JSON格式的字符串转化为js的对象
+        console.log(JSON.parse('{"name":"xiaoming","age":14}'))
+
+    </script>
+</body>
+
+</html>
