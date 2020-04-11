@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict'
+        //使用class来编写构造函数
+        /* class Student {
+            constructor(name) {
+                this.name = name
+            };
+            hello() {
+                alert('hello,' + this.name + '!')
+            }
+        }
+        var xiaoming = new Student('小明');
+        console.log(xiaoming.name);
+        xiaoming.hello() */
+
+
+
+        //使用class继承编写Student的子类
+        /* class PrimaryStudent extends Student {
+            constructor(name, grade) {
+                super(name);//表示使用name来继承父类中所有的方法
+                this.grade = grade
+            };
+            myGrade() {
+                alert('my grade is' + this.grade)
+            }
+        }
+        var xiaohua = new PrimaryStudent('小华', 82);
+        xiaohua.hello();
+        console.log(xiaohua.grade);
+        xiaohua.myGrade() */
+
+
+
+
+        class Animal {
+            constructor(name){
+                this.name=name
+            }
+        };
+        class Cat extends Animal {
+            constructor(name){//表示使用name去继承父类中所有的方法
+                super(name)
+            };
+            say(){
+                return 'hello! '+this.name
+            }
+        };
+        var mao=new Cat('猫');
+        console.log(mao.say())
+    </script>
+</body>
+
+</html>
